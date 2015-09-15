@@ -1,0 +1,377 @@
+% Oliver Jourmel
+%
+%
+% MATH 362 Number Theory
+% Fall 2015
+%
+\documentclass[fleqn,letterpaper,10pt,twoside]{report}
+
+%------------------------------------------------------------------------------
+% DOCUMENT MARGINS, SPACING, AND FONTS
+%------------------------------------------------------------------------------
+%\usepackage[margin=2.6cm]{geometry}
+%\usepackage{float}
+\usepackage[normalem]{ulem}
+%\usepackage{todonotes}
+%\usepackage{soul}
+%\linespread{2.1}
+
+% === TODO old spec === %
+\topmargin=-2cm
+\textheight=24cm
+\textwidth=16cm
+\oddsidemargin=0cm
+\evensidemargin=0cm
+
+\setlength{\parindent}{0mm}
+
+% Packages
+\usepackage{booktabs}
+\usepackage{pifont}
+\usepackage{graphicx}
+\usepackage{psfrag}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage{latexsym}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{appendix}
+\usepackage{array}
+\usepackage[bf]{titlesec}
+\usepackage{tabto}
+
+\usepackage{todonotes}
+
+% Hyper links, with black links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,        % false: boxed links; true: coloured links
+    linkcolor=black,        % colour of internal links
+                            % (change box colour with linkbordercolor)
+    citecolor=black,        % colour of links to bibliography
+    filecolor=black,        % colour of file links
+    urlcolor=black          % colour of external links
+}
+
+% Heading Formats
+\titleformat{\chapter}[display]
+{\sffamily\huge\bfseries}{Chapter \thechapter}{1ex}{}
+
+\titleformat{\section}
+{\sffamily\large\bfseries}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\sffamily\normalsize\bfseries}{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\sffamily\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+
+%------------------------------------------------------------------------------
+% CUSTOM ENVIRONMENTS, HEADINGS, AND SYMBOLS
+%------------------------------------------------------------------------------
+\newcounter{example}
+\newenvironment{example}
+{\underline{\sffamily\bfseries Example \theexample}\\}
+{\hspace*{\fill}$\bullet$ \stepcounter{example}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{remark}
+\newtheorem*{fact}{Fact}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\len}{\mathrm{len}}
+
+
+%------------------------------------------------------------------------------
+% BIBLIOGRAPHY SETUP
+%------------------------------------------------------------------------------
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage{biblatex}
+\renewcommand*{\nameyeardelim}{\addcomma\space}
+\renewbibmacro{in:}{}
+\addbibresource{vpn-sic-2015.bib}
+
+%------------------------------------------------------------------------------
+% APPENDIX SETUP
+%------------------------------------------------------------------------------
+%\usepackage[toc]{appendix}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\pagestyle{fancy}
+
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername \ \thechapter.\ #1}{}} 
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}{}}
+\fancyhead[LE,RO]{\sffamily\bfseries \rightmark}
+\fancyhead[LO,RE]{\sffamily\bfseries \leftmark}
+
+\setcounter{chapter}{0}
+\setcounter{definition}{1}
+\setcounter{example}{1}
+
+\chapter{Introduction}
+\section{Number Theory}
+
+\begin{definition}{Number Theory}
+
+   \textit{Number Theory} is the theory of integers.
+\end{definition}
+
+\subsection{Roots of Number Theory}
+Roots of number theory lie in:
+\begin{itemize}
+   \item{Euclid's Elements (300 BC)}
+      \begin{itemize}
+         \item{Prime numbers}
+         \item{Composite numbers}
+         \item{Greatest Common Deviser}
+         \item{Properties of divisibility}
+         \item{Perfect numbers}
+      \end{itemize}
+   \item{Diophantus (200AD - 300AD) (Father of Algebra)}
+      \begin{itemize}
+         \item{Diophantine Equations}
+            Equations with integer solutions
+            \begin{enumerate}
+               \item{\(3x + 18y = 71\)}
+               \item{\(x^2 + y^2 = z^2\)}
+               \item{\(x^n + y^n = z^n, (n >= 3)\)}
+            \end{enumerate}
+      \end{itemize}
+   \item{\href{https://en.wikipedia.org/wiki/Pierre\_de\_Fermat}{Fermat} (1601 - 1665)}
+   \item{\href{https://en.wikipedia.org/wiki/Leonhard\_Euler}{Euler} (1707 - 1783)}
+   \item{\href{https://en.wikipedia.org/wiki/Carl\_Friedrich\_Gauss}{Gauss} (1777 - 1855)}
+   \item{\href{https://en.wikipedia.org/wiki/Joseph-Louis\_Lagrange}{Lagrange} (1736 - 1813)}
+\end{itemize}
+
+\subsubsection{Perfect Numbers}
+
+\begin{center}
+\begin{tabular}{l|llll}
+   \#     &  \multicolumn{3}{c}{Sum of the Proper Divisors} & \\ \hline 
+   2     &  \(1\) &  =  &  1 & \\
+   3     &  \(1\) &  =  &  1 & \\
+   4     &  \(1 + 2\) &  =  &  3 & \\
+   5     &  \(1\) &  =  &  1 & \\
+   6     &  \(1 + 2 + 3\) &  =  &  6 & * \\
+   7     &  \(1\) &  =  &  1 & \\
+   8     &  \(1 + 2 + 4\) &  =  &  7 & \\
+   12    &  \(1 + 2 + 3 + 4 + 6\) &  =  &  16 & \\
+   28    &  \(1 + 2 + 4 + 7 + 14\) &  =  &  28 & * \\
+\end{tabular}
+\end{center}
+
+\(2,3,4,5,7,8\) are \textit{defitient}
+
+\(12\) is \textit{abundant}
+
+\(6,28\) are \textit{perfect}
+
+
+\subsubsection{Lagrange - Interesting Problem}
+\begin{center}
+\begin{tabular}{rcl}
+  1 & = & \(1^2 + 0^2\) \\
+  1 & = & \(1^2 + 1^2\) \\
+   \sout{3} & & \\
+  1 & = & \(2^2 + 0^2\) \\
+  1 & = & \(2^2 + 1^2\) \\
+   \sout{6} & & \\
+   \sout{7} & & \\
+  8 & = & \(2^2 + 2^2\) \\
+  8 & = & \(3^2 + 0^2\) \\
+  10 & = & \(3^2 + 1^2\) \\
+   \sout{11} & & \\
+\end{tabular}
+\end{center}
+
+\textit{Which number can be or cannot be written as a sum of two squares?}
+
+\subsubsection{An Additional Interesting Problem}
+\begin{center}
+\begin{tabular}{cccccccccc}
+   1 & 4 & 8 & 9 & 16 & 25 & 27 & 32 & 36 & 49 \\
+   \(1^2\) & \(2^2\) &\(2^3\) & \(3^2\) & \(4^2\) & \(5^2\) &\(3^3\) & \(2^5\) & \(6^2\) & \(7^2\) \\
+\end{tabular}
+\end{center}
+
+\textit{Which number can be or cannot be written as a sum of two squares?} (like 8,9)
+
+or
+
+\textit{Solve this dophantine Equation:}
+\[x^n-y^m=1\]
+
+\subsection{Basics (Prime Numbers and Divisibility)}
+\subsubsection{Important Unsolved Problem}
+\textit{Is there a \emph{good} formula for determining the next prime, or even another prime?}
+
+\textbf{Possible Formulas (Not that Good)}
+\begin{itemize}
+   \item{Sierpinski} \newline
+      Let \(\xi = \sum\limits_{n=1}^\infty P_n10^{-2^n} \;, P_n = n^{\text{th}}\) prime
+
+      \(\xi = 0.020300050000000700\ldots\)
+
+      Then
+
+      \(P_n = \left \lfloor{10^{2^n} \xi} \right \rfloor - 10^{2^{n_-1}} \cdot
+      \left \lfloor{10^{2^{n_-1}} \xi} \right \rfloor \)
+
+   \item{John Conway}
+      \begin{center}
+      \begin{tabular}{cccccccccccccc}
+         A&B&C&D&E&F&G&H&I&J&K&L&M&N \\
+         \(\frac{17}{91}\) &
+         \(\frac{78}{85}\) &
+         \(\frac{19}{51}\) &
+         \(\frac{23}{38}\) &
+         \(\frac{29}{33}\) &
+         \(\frac{77}{29}\) &
+         \(\frac{95}{23}\) &
+         \(\frac{77}{19}\) &
+         \(\frac{1 }{7 }\) &
+         \(\frac{11}{13}\) &
+         \(\frac{13}{11}\) &
+         \(\frac{15}{2 }\) &
+         \(\frac{1 }{7 }\) &
+         \(\frac{55}{1 }\) \\
+      \end{tabular}
+      \end{center}
+
+      Start with 2
+
+      Multiply each fraction by 2 until you find the left most fraction where the product is an integer.
+
+      \(2 \times \frac{15}{2} = 15\)
+
+      Repeat this process using 15
+
+      \(15 \times \frac{55}{1} = 825\)
+
+      Continue with this definitely
+
+      This produces:
+
+      \(2,15,825,725,1925,2275,425,390,330,290,770,910,170,156,132,116,308,364,68,\boldsymbol{4},30,225,\ldots,136,\boldsymbol{8},\ldots,\boldsymbol{32},\ldots\)
+
+      Notice that \(4 - 2^2, 8 = 2^3, 32 = 2^5\)
+
+      If you list the powers of two, in the order that you find them, you get:
+
+      \(2^2, 2^3, 2^5, 2^7, 2^11, 2^13, 2^17, 2^19, \ldots\)
+
+\end{itemize}
+
+\subsubsection{Divisibility}
+\begin{definition}
+
+   Let \(a\) and \(b\) be integers. We say that \(a\) \textit{devides}
+   \(b\), written \(a \mid b\), if there is an integer \(c\) such that
+   \(a \cdot c = b\)
+
+   We might also say
+   \begin{itemize}
+      \item{\(a\) is a \textit{divisor} of \(b\)}
+      \item{\(a\) is a \textit{factor} of \(b\)}
+      \item{\(b\) is \textit{divisible} by \(a\)}
+      \item{\(b\) is a \textit{multiple} of \(a\)}
+   \end{itemize}
+
+   If \(a\) does not divide \(b\), we write \(a \nmid b\).
+\end{definition}
+
+\todo{fix the formating when it comes to equations}
+\begin{example}
+
+   \(5 \mid 30 \),\enskip since \(5 \cdot 6 = 30 \)
+   \(4 \nmid 60 \),\enskip since if \(4 \cdot c = 6 \), then \(c = \frac{3}{2}\) which is not an integer.
+
+   \(4 \mid -4 \),\enskip since \(4 \cdot -1 = 4 \)
+   \(-4 \mid 4 \),\enskip since \(-4 \cdot -1 = 4 \)
+
+   \(0 \nmid 8 \),\enskip since if \(0 \cdot c = 8 \), then \(0 = 8\) which is a contradiction.
+
+   \(8 \mid 0 \),\enskip since \(8 \cdot 0 = 0 \)
+
+   \(0 \mid 30 \),\enskip since \(0 \cdot 0 = 0 \)
+
+\end{example}
+
+\begin{lemma}{\ }
+
+   Let \(a, b\) and \(c\) be integers.
+
+   If \(a \mid b\) and \(a \mid c\) \\
+   Then
+   \begin{enumerate}
+      \item{\(a \mid b + c\)}
+      \item{\(a \mid b - c\)}
+      \item{\(a \mid b \cdot d\) for any integer \(d\)}
+   \end{enumerate}
+
+\end{lemma}
+
+\begin{proof}{\ }
+
+   \begin{enumerate}
+
+      \item{}
+
+         Suppose \(a \mid b\) and \(a \mid c\) \\
+         Then there exists integers \(d\) and \(e\) such that
+         \begin{equation*}
+            \begin{split}
+               a \cdot d & = b \\
+               a \cdot e & = c \\
+               a \cdot d + a \cdot e & = b + c \\
+               a (d + e) & = b + c \\
+            \end{split}
+         \end{equation*}
+
+         Since \((d + e)\) is an integer, as \(d\) and \(e\) are integers,
+         \[a \mid b + c\]
+
+      \item{\textbf{HomeWork}}
+
+      \item{}
+
+         Suppose \(a \mid b\) \\
+         Then there exists an integers \(c\).\\
+         Let \(d\) be some integer.
+         \begin{equation*}
+            \begin{split}
+               a \cdot c & = b \\
+               (a \cdot c) \cdot d & = b \cdot d \\
+               a \cdot (c \cdot d) & = b \cdot d \\
+            \end{split}
+         \end{equation*}
+
+         Since \((c \cdot d)\) is an integer,
+         \[a \mid b \cdot d\]
+
+   \end{enumerate}
+\end{proof}
+
+
+\end{document}
+
+
