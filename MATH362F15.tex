@@ -39,6 +39,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{mathtools}
 \usepackage{bm}
 \usepackage{cancel}
 \usepackage{appendix}
@@ -118,7 +119,7 @@
 
 \pagestyle{fancy}
 
-\renewcommand{\chaptermark}[1]{\markboth{\chaptername \ \thechapter.\ #1}{}} 
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername \ \thechapter.\ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}{}}
 \fancyhead[LE,RO]{\sffamily\bfseries \rightmark}
 \fancyhead[LO,RE]{\sffamily\bfseries \leftmark}
@@ -129,65 +130,55 @@
 
 \chapter{Introduction}
 \section{Number Theory}
-
 \begin{definition}{Number Theory}
 
    \textit{Number Theory} is the theory of integers.
 \end{definition}
 
-\subsection{Roots of Number Theory}
-Roots of number theory lie in:
-\begin{itemize}
-   \item{Euclid's Elements (300 BC)}
-      \begin{itemize}
-         \item{Prime numbers}
-         \item{Composite numbers}
-         \item{Greatest Common Deviser}
-         \item{Properties of divisibility}
-         \item{Perfect numbers}
-      \end{itemize}
-   \item{Diophantus (200AD - 300AD) (Father of Algebra)}
-      \begin{itemize}
-         \item{Diophantine Equations}
-            Equations with integer solutions
-            \begin{enumerate}
-               \item{\(3x + 18y = 71\)}
-               \item{\(x^2 + y^2 = z^2\)}
-               \item{\(x^n + y^n = z^n, (n >= 3)\)}
-            \end{enumerate}
-      \end{itemize}
-   \item{\href{https://en.wikipedia.org/wiki/Pierre\_de\_Fermat}{Fermat} (1601 - 1665)}
-   \item{\href{https://en.wikipedia.org/wiki/Leonhard\_Euler}{Euler} (1707 - 1783)}
-   \item{\href{https://en.wikipedia.org/wiki/Carl\_Friedrich\_Gauss}{Gauss} (1777 - 1855)}
-   \item{\href{https://en.wikipedia.org/wiki/Joseph-Louis\_Lagrange}{Lagrange} (1736 - 1813)}
-\end{itemize}
+\begin{definition}{Diophantine Equations }
 
-\subsubsection{Perfect Numbers}
+   Equations with integer solutions
+   \begin{enumerate}
+      \item{\(3x + 18y = 71\)}
+      \item{\(x^2 + y^2 = z^2\)}
+      \item{\(x^n + y^n = z^n, (n >= 3)\)}
+   \end{enumerate}
+\end{definition}
 
-\begin{center}
-\begin{tabular}{l|llll}
-   \#     &  \multicolumn{3}{c}{Sum of the Proper Divisors} & \\ \hline 
-   2     &  \(1\) &  =  &  1 & \\
-   3     &  \(1\) &  =  &  1 & \\
-   4     &  \(1 + 2\) &  =  &  3 & \\
-   5     &  \(1\) &  =  &  1 & \\
-   6     &  \(1 + 2 + 3\) &  =  &  6 & * \\
-   7     &  \(1\) &  =  &  1 & \\
-   8     &  \(1 + 2 + 4\) &  =  &  7 & \\
-   12    &  \(1 + 2 + 3 + 4 + 6\) &  =  &  16 & \\
-   28    &  \(1 + 2 + 4 + 7 + 14\) &  =  &  28 & * \\
-\end{tabular}
-\end{center}
+\begin{definition}{Perfect Numbers}
 
-\(2,3,4,5,7,8\) are \textit{defitient}
+   \begin{itemize}
+      \item{A number is \textit{defitient} if the sum of it's proper divisors
+         is equals to itself.}
+      \item{A number is \textit{abundant} if the sum of it's proper divisors
+         is greater than itself.}
+      \item{A number is \textit{perfect} if the sum of it's proper divisors
+         is less than itself.}
+   \end{itemize}
 
-\(12\) is \textit{abundant}
+   \begin{tabular}{l|llll}
+      \#     &  \multicolumn{3}{c}{Sum of the Proper Divisors} & \\ \hline
+      2     &  \(1\) &  =  &  1 & \\
+      3     &  \(1\) &  =  &  1 & \\
+      4     &  \(1 + 2\) &  =  &  3 & \\
+      5     &  \(1\) &  =  &  1 & \\
+      6     &  \(1 + 2 + 3\) &  =  &  6 & * \\
+      7     &  \(1\) &  =  &  1 & \\
+      8     &  \(1 + 2 + 4\) &  =  &  7 & \\
+      12    &  \(1 + 2 + 3 + 4 + 6\) &  =  &  16 & \\
+      28    &  \(1 + 2 + 4 + 7 + 14\) &  =  &  28 & * \\
+   \end{tabular}
 
-\(6,28\) are \textit{perfect}
+   \(2,3,4,5,7,8\) are \textit{defitient}
 
+   \(12\) is \textit{abundant}
 
-\subsubsection{Lagrange - Interesting Problem}
-\begin{center}
+   \(6,28\) are \textit{perfect}
+
+\end{definition}
+
+\begin{remark}{Lagrange - Interesting Problem}
+
 \begin{tabular}{rcl}
   1 & = & \(1^2 + 0^2\) \\
   1 & = & \(1^2 + 1^2\) \\
@@ -201,40 +192,40 @@ Roots of number theory lie in:
   10 & = & \(3^2 + 1^2\) \\
    \sout{11} & & \\
 \end{tabular}
-\end{center}
 
 \textit{Which number can be or cannot be written as a sum of two squares?}
 
-\subsubsection{An Additional Interesting Problem}
-\begin{center}
+\end{remark}
+
+\begin{remark}{An Additional Interesting Problem}
+
 \begin{tabular}{cccccccccc}
    1 & 4 & 8 & 9 & 16 & 25 & 27 & 32 & 36 & 49 \\
    \(1^2\) & \(2^2\) &\(2^3\) & \(3^2\) & \(4^2\) & \(5^2\) &\(3^3\) & \(2^5\) & \(6^2\) & \(7^2\) \\
 \end{tabular}
-\end{center}
 
-\textit{Which number can be or cannot be written as a sum of two squares?} (like 8,9)
+\textit{How often are two of these powers sequential?} (like 8,9)
 
 or
 
 \textit{Solve this dophantine Equation:}
 \[x^n-y^m=1\]
 
+\end{remark}
+
 \subsection{Basics (Prime Numbers and Divisibility)}
-\subsubsection{Important Unsolved Problem}
-\textit{Is there a \emph{good} formula for determining the next prime, or even another prime?}
+\begin{remark}{Is there a good formula for determining the next prime, or even another prime?}
 
 \textbf{Possible Formulas (Not that Good)}
 \begin{itemize}
-   \item{Sierpinski} \newline
-      Let \(\xi = \sum\limits_{n=1}^\infty P_n10^{-2^n} \;, P_n = n^{\text{th}}\) prime
-
-      \(\xi = 0.020300050000000700\ldots\)
-
-      Then
-
-      \(P_n = \left \lfloor{10^{2^n} \xi} \right \rfloor - 10^{2^{n_-1}} \cdot
-      \left \lfloor{10^{2^{n_-1}} \xi} \right \rfloor \)
+   \item{Sierpinski}
+      \begin{align*}
+         \text{Let } \xi &= \sum\limits_{n=1}^\infty P_n10^{-2^n} & P_n = n^{\text{th}} \text{prime} \\
+                    \xi &= 0.020300050000000700\ldots \\
+         \text{Then} \\
+         P_n &= \left \lfloor{10^{2^n} \xi} \right \rfloor - 10^{2^{n_-1}} \cdot
+         \left \lfloor{10^{2^{n_-1}} \xi} \right \rfloor
+      \end{align*}
 
    \item{John Conway}
       \begin{center}
@@ -259,7 +250,7 @@ or
 
       Start with 2
 
-      Multiply each fraction by 2 until you find the left most fraction where the product is an integer.
+      Multiply each fraction by 2 until you find the left most fraction where the product is an integer
 
       \(2 \times \frac{15}{2} = 15\)
 
@@ -271,20 +262,21 @@ or
 
       This produces:
 
-      \(2,15,825,725,1925,2275,425,390,330,290,770,910,170,156,132,116,308,364,68,\boldsymbol{4},30,225,\ldots,136,\boldsymbol{8},\ldots,\boldsymbol{32},\ldots\)
+      \(2,15,825,725,1925,2275,425,390,330,290,770,910,170,156,132,116,308,364,\) \\
+      \(68,\boldsymbol{4},30,225,\ldots,136,\boldsymbol{8},\ldots,\boldsymbol{32},\ldots\)
 
-      Notice that \(4 - 2^2, 8 = 2^3, 32 = 2^5\)
+      Notice that \(4 = 2^2, 8 = 2^3, 32 = 2^5\)
 
       If you list the powers of two, in the order that you find them, you get:
 
       \(2^2, 2^3, 2^5, 2^7, 2^11, 2^13, 2^17, 2^19, \ldots\)
 
 \end{itemize}
+\end{remark}
 
-\subsubsection{Divisibility}
-\begin{definition}
+\begin{definition}{Divisibility}
 
-   Let \(a\) and \(b\) be integers. We say that \(a\) \textit{devides}
+   Let \(a\) and \(b\) be integers. We say that \(a\) \textit{divides}
    \(b\), written \(a \mid b\), if there is an integer \(c\) such that
    \(a \cdot c = b\)
 
@@ -299,20 +291,18 @@ or
    If \(a\) does not divide \(b\), we write \(a \nmid b\).
 \end{definition}
 
-\todo{fix the formating when it comes to equations}
 \begin{example}
-
-   \(5 \mid 30 \),\enskip since \(5 \cdot 6 = 30 \)
-   \(4 \nmid 60 \),\enskip since if \(4 \cdot c = 6 \), then \(c = \frac{3}{2}\) which is not an integer.
-
-   \(4 \mid -4 \),\enskip since \(4 \cdot -1 = 4 \)
-   \(-4 \mid 4 \),\enskip since \(-4 \cdot -1 = 4 \)
-
-   \(0 \nmid 8 \),\enskip since if \(0 \cdot c = 8 \), then \(0 = 8\) which is a contradiction.
-
-   \(8 \mid 0 \),\enskip since \(8 \cdot 0 = 0 \)
-
-   \(0 \mid 30 \),\enskip since \(0 \cdot 0 = 0 \)
+   \begin{align*}
+      5&\mid 30, & &\text{since} & 5 \cdot 6 &= 30 \\
+      4&\nmid 60,& &\text{since if} & 4 \cdot c &= 6 \\
+       &         & &\text{then}  & c &= \frac{3}{2} & \text{which is not an integer.} \\[2ex]
+      4&\mid -4, & &\text{since} & 4 \cdot -1 &= 4 \\
+      -4&\mid 4, & &\text{since} & -4 \cdot -1 &= 4 \\[2ex]
+      0&\nmid 8, & &\text{since if} & 0 \cdot c &= 8 \\
+       &         & &\text{then} & 0 &= 8 & \text{which is a contradiction.} \\[2ex]
+      8&\mid 0,  & &\text{since} & 8 \cdot 0 &= 0 \\
+      0&\mid 30, & &\text{since} & 0 \cdot 0 &= 0
+   \end{align*}
 
 \end{example}
 
@@ -325,7 +315,7 @@ or
    \begin{enumerate}
       \item{\(a \mid b + c\)}
       \item{\(a \mid b - c\)}
-      \item{\(a \mid b \cdot d\) for any integer \(d\)}
+      \item{\(a \mid b \cdot d\) \qquad for any integer \(d\)}
    \end{enumerate}
 
 \end{lemma}
@@ -338,17 +328,14 @@ or
 
          Suppose \(a \mid b\) and \(a \mid c\) \\
          Then there exists integers \(d\) and \(e\) such that
-         \begin{equation*}
-            \begin{split}
-               a \cdot d & = b \\
-               a \cdot e & = c \\
-               a \cdot d + a \cdot e & = b + c \\
-               a (d + e) & = b + c \\
-            \end{split}
-         \end{equation*}
+         \begin{align*}
+            a \cdot d & = b \\
+            a \cdot e & = c \\
+            a \cdot d + a \cdot e & = b + c \\
+            a (d + e) & = b + c & \text{Since \((d + e)\) is an integer, as \(d\) and \(e\) are integers, } \\
+            a & \mid b + c \\
+         \end{align*}
 
-         Since \((d + e)\) is an integer, as \(d\) and \(e\) are integers,
-         \[a \mid b + c\]
 
       \item{\textbf{HomeWork}}
 
@@ -357,16 +344,13 @@ or
          Suppose \(a \mid b\) \\
          Then there exists an integers \(c\).\\
          Let \(d\) be some integer.
-         \begin{equation*}
-            \begin{split}
-               a \cdot c & = b \\
-               (a \cdot c) \cdot d & = b \cdot d \\
-               a \cdot (c \cdot d) & = b \cdot d \\
-            \end{split}
-         \end{equation*}
+         \begin{align*}
+            a \cdot c & = b \\
+            (a \cdot c) \cdot d & = b \cdot d \\
+            a \cdot (c \cdot d) & = b \cdot d & \text{Since \((c \cdot d)\) is an integer,} \\
+            a & \mid b \cdot d
+         \end{align*}
 
-         Since \((c \cdot d)\) is an integer,
-         \[a \mid b \cdot d\]
 
    \end{enumerate}
 \end{proof}
